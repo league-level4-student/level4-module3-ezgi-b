@@ -1,5 +1,7 @@
 package _01_introduction;
 
+
+
 public class ExceptionsDemo {
 	public static void main(String[] args) {
 		// Exceptions are ways to allow your program to continue running 
@@ -16,6 +18,7 @@ public class ExceptionsDemo {
 		//    In the catch block, put a print statement so you know
 		//    if the code is being ran.
 		
+		
 		// 2. Now call testMethod1 with a value greater than 5. 
 		//    Running your program should not print the statement
 		//    in the catch block.
@@ -30,6 +33,12 @@ public class ExceptionsDemo {
 		//    CustomException object.
 		//    This demonstrates how custom exception classes can be used to
 		//    handle exceptions in unlimited ways.
+		try {
+			ExceptionsDemo.testMethod2(-1);
+		} catch (CustomException e) {
+			e.terminate();
+		}
+		
 	}
 	
 	public static void testMethod1(int x) throws Exception {
@@ -40,4 +49,15 @@ public class ExceptionsDemo {
 	
 	// 4. Create a static void method called testMethod2(int x) that throws
 	//    a CustomException if x is negative.
+	public static void testMethod2(int x) throws CustomException {
+		if(x < 0) {
+			throw new CustomException();
+		}
+	}
+}
+
+class CustomException extends Exception{
+	void terminate() {
+		System.exit(0);
+	}
 }
